@@ -1,0 +1,49 @@
+{
+  "start": {
+    "background": "park.jpg",
+    "character": "hero.png",
+    "text": "Что же делать?",
+    "choices": [
+      {
+        "text": "Упасть рядом",
+        "next": "fall"
+      },
+      {
+        "text": "Позвонить в скорую",
+        "next": "ambulance"
+      },
+      {
+        "text": "Сделать искусственное дыхание",
+        "next": "cpr"
+      },
+      {
+        "text": "Закричать, что это смертельный вирус",
+        "next": "virus"
+      }
+    ]
+  },
+
+  "fall": {
+    "background": "park.jpg",
+    "character": "hero.png",
+    "text": "Вы падаете рядом. Люди в панике отходят.",
+    "choices": [
+      {
+        "text": "Попробовать снова",
+        "next": "start"
+      }
+    ]
+  },
+
+  "ambulance": {
+    "background": "park.jpg",
+    "character": "hero.png",
+    "text": "Вы звоните в скорую. Это правильное решение.",
+    "choices": [
+      {
+        "text": "Продолжить",
+        "next": "start"
+      }
+    ]
+  }
+}
