@@ -9,8 +9,7 @@ body {
     background: #18392b;
     font-family: Arial, sans-serif;
 }
-
-/* Главная рамка: теперь адаптивная, занимает почти весь экран */
+/* Главная рамка теперь адаптивная, занимает почти весь экран */
 #game {
     position: relative;
     width: 95vw;
