@@ -100,10 +100,6 @@
       { "text": " Вернуться в главное меню", "next": "menu" }
     ]
   }
-}
-
-
-{
   "lvl2_intro": {
     "background": "dorm.jpg",
     "character": "ahmed.png",
@@ -205,8 +201,6 @@
       { "text": "Вернуться в главное меню", "next": "menu" }
     ]
   }
-}
-{
   "lvl3_intro": {
     "background": "park.jpg",
     "character": "dad.png",
