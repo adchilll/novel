@@ -73,11 +73,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.innerText = choice.text;
                 btn.onclick = () => {
                     if (choice.next === "menu") {
-                        showScreen("menu"); // Переход в главное меню
+                        showScreen("menu");
                     } else if (choice.next === "levels") {
-                        showScreen("levels"); // Переход к карте уровней
+                        // Если переходим на карту после успеха — разблокируем следующий уровень
+                        if (choice.text.includes("Вернуться на карту") && unlockedLevel < 3) {
+                            unlockedLevel++;
+                            updateLevelMap();
+                        }
+                        showScreen("levels");
+                    } else if (choice.next === "good_end") {
+                        // Стандартная логика для good_end
+                        if (unlockedLevel < 3) {
+                            unlockedLevel++;
+                            updateLevelMap();
+                        }
+                        showScene("good_end");
                     } else {
-                        showScene(choice.next); // Обычный переход по сцене
+                        showScene(choice.next);
                     }
                 };
                 choicesDiv.appendChild(btn);
