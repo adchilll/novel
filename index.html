@@ -10,12 +10,16 @@
     <!-- Экран меню -->
     <div id="menu" class="screen">
         <h1>Первая встреча</h1>
-        <button id="start-btn">Начать</button>
-        <button id="exit-btn">Выход</button>
+    <div class="buttons">
+        <button id="start-btn">▶ Начать</button>
+        <button id="exit-btn">✕ Выход</button>
+    </div>
     </div>
 
     <!-- Экран уровней -->
     <div id="levels" class="screen">
+    <h2 style="color:#fff; margin-bottom:20px; text-align:center;">🗺️ Выберите уровень</h2>
+        
         <div class="map">
             <div class="node unlocked" data-level="1">
                 <div class="circle">1</div>
@@ -32,7 +36,9 @@
                 <span>Итог</span>
             </div>
         </div>
-        <button id="back-btn">Назад</button>
+    <div class="back-container">
+        <button id="back-btn">← Назад</button>
+    </div>
     </div>
 
     <!-- Экран игры -->
