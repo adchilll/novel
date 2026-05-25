@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const lvl = parseInt(node.dataset.level);
             if (lvl <= unlockedLevel && Object.keys(scenes).length > 0) {
                 showScreen("game");
-                showScene(lvl === 1 ? "intro" : `level${lvl}_start`);
+                showScene(lvl === 1 ? "intro" : `lvl${lvl}_intro`);
             }
         });
     });
