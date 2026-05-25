@@ -100,7 +100,7 @@ body {
 #menu button#exit-btn:hover {
     background: linear-gradient(145deg, #777, #555);
     box-shadow: 0 8px 25px rgba(100, 100, 100, 0.4);
-
+}
 /* Карта уровней */
 #levels {
     background: linear-gradient(135deg, #18392b 0%, #0d241a 50%, #071a10 100%);
