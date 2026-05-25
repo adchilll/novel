@@ -69,7 +69,7 @@ body {
 
 /* Скрываем игру, пока не выбран уровень */
 #game { display: none; }
-#game.show { display: block; }
+#game.active { display: block; }
 
 #character {
     position: absolute;
