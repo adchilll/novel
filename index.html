@@ -33,6 +33,30 @@
     </div>
 
     <script src="engine.js"></script>
+<div id="menu" class="screen active">
+    <h1>Первая встреча</h1>
+    <button id="start-btn">Начать</button>
+    <button id="exit-btn">Выход</button>
+</div>
 
+<div id="levels" class="screen">
+    <div class="map">
+        <div class="node unlocked" data-level="1">
+            <div class="circle">1</div>
+            <span>Парк</span>
+        </div>
+        <div class="line"></div>
+        <div class="node locked" data-level="2">
+            <div class="circle">2</div>
+            <span>Больница</span>
+        </div>
+        <div class="line"></div>
+        <div class="node locked" data-level="3">
+            <div class="circle">3</div>
+            <span>Итог</span>
+        </div>
+    </div>
+    <button id="back-btn">Назад</button>
+</div>
 </body>
 </html>
