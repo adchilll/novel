@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (choice.next === "menu") {
                         showScreen("menu");
                     } else if (choice.next === "levels") {
-                        // Если переходим на карту после успеха — разблокируем следующий уровень
                         if (choice.text.includes("Вернуться на карту") && unlockedLevel < 3) {
                             unlockedLevel++;
                             updateLevelMap();
