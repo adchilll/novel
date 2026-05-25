@@ -71,7 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
             scene.choices.forEach(choice => {
                 const btn = document.createElement("button");
                 btn.innerText = choice.text;
-                btn.onclick = () => showScene(choice.next);
+                btn.onclick = () => {
+                    if (choice.next === "menu") {
+                        showScreen("menu"); // Переход в главное меню
+                    } else if (choice.next === "levels") {
+                        showScreen("levels"); // Переход к карте уровней
+                    } else {
+                        showScene(choice.next); // Обычный переход по сцене
+                    }
+                };
                 choicesDiv.appendChild(btn);
             });
         }
