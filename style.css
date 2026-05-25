@@ -38,34 +38,197 @@ body {
 }
 .screen.active { display: flex; }
 
-#menu h1 { color: #fff; font-size: 38px; margin-bottom: 30px; text-align: center; letter-spacing: 1px; }
-#menu button {
-    width: 200px; padding: 14px; margin: 8px 0; border: none; border-radius: 12px;
-    background: #2d6a4f; color: #fff; font-size: 18px; cursor: pointer; transition: 0.2s;
+#menu {
+    text-align: center;
+    background: linear-gradient(135deg, #18392b 0%, #0d241a 50%, #071a10 100%);
 }
-#menu button:hover { background: #40916c; transform: scale(1.03); }
+
+#menu h1 {
+    color: #fff;
+    font-size: 42px;
+    margin: 0 0 40px 0;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(64, 145, 108, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(64, 145, 108, 0.3); }
+    to { text-shadow: 0 0 30px rgba(64, 145, 108, 0.8), 0 0 60px rgba(64, 145, 108, 0.3); }
+}
+
+#menu .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+#menu button {
+    width: 180px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #2d6a4f, #1b4332);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+#menu button:hover {
+    background: linear-gradient(145deg, #40916c, #2d6a4f);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(64, 145, 108, 0.4);
+}
+
+#menu button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+#menu button#exit-btn {
+    background: linear-gradient(145deg, #555, #3a3a3a);
+}
+
+#menu button#exit-btn:hover {
+    background: linear-gradient(145deg, #777, #555);
+    box-shadow: 0 8px 25px rgba(100, 100, 100, 0.4);
 
 /* Карта уровней */
-.map { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
-.node { display: flex; flex-direction: column; align-items: center; opacity: 0.5; cursor: default; transition: 0.2s; }
-.node.unlocked { opacity: 1; cursor: pointer; }
-.node.unlocked:hover .circle { transform: scale(1.1); box-shadow: 0 0 20px #40916c; }
-.node .circle {
-    width: 54px; height: 54px; border-radius: 50%; background: #1b4332; border: 3px solid #40916c;
-    display: flex; justify-content: center; align-items: center; color: #fff;
-    font-size: 22px; font-weight: bold; transition: 0.2s;
+#levels {
+    background: linear-gradient(135deg, #18392b 0%, #0d241a 50%, #071a10 100%);
 }
-.node.locked .circle { border-color: #444; background: #2a2a2a; }
-.node.completed .circle { background: #40916c; border-color: #52b788; }
-.node span { color: #ccc; margin-top: 8px; font-size: 13px; }
-.line { width: 35px; height: 3px; background: #2d6a4f; border-radius: 2px; }
-.line.locked { background: #444; }
+
+#levels .map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0 50px 0;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Узел уровня */
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.4;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.node.unlocked {
+    opacity: 1;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+    @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.node.unlocked:hover {
+    transform: scale(1.1);
+}
+    
+.node .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #1b4332, #0d241a);
+    border: 3px solid #40916c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.node.unlocked:hover .circle {
+    box-shadow: 0 0 30px rgba(64, 145, 108, 0.6), 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-color: #52b788;
+}
+
+.node.completed .circle {
+    background: linear-gradient(145deg, #40916c, #2d6a4f);
+    border-color: #52b788;
+    box-shadow: 0 0 20px rgba(64, 145, 108, 0.4);
+}
+    
+.node.locked .circle {
+    border-color: #444;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+}
+
+.node span {
+    color: #ccc;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.node.unlocked span {
+    color: #fff;
+}
+    
+.line {
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #2d6a4f, transparent);
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+.line.locked {
+    background: linear-gradient(90deg, transparent, #444, transparent);
+    opacity: 0.3;
+}
+
+#levels .back-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
 
 #back-btn {
-    padding: 10px 24px; border: none; border-radius: 10px; background: #555;
-    color: #fff; font-size: 16px; cursor: pointer; transition: 0.2s;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #555, #3a3a3a);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
 }
-#back-btn:hover { background: #777; }
+
+#back-btn:hover {
+    background: linear-gradient(145deg, #777, #555);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(100, 100, 100, 0.4);
+}
+
+#back-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
 
 /* Скрываем игру, пока не выбран уровень */
 #game { display: none; }
