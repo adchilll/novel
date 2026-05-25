@@ -9,7 +9,6 @@ body {
     background: #18392b;
     font-family: Arial, sans-serif;
 }
-/* Главная рамка теперь адаптивная, занимает почти весь экран */
 #game {
     position: relative;
     width: 95vw;
@@ -30,6 +29,48 @@ body {
     z-index: 1;
 }
 
+/* Экраны меню и карты уровней */
+.screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    background: linear-gradient(135deg, #18392b 0%, #0d241a 100%);
+    z-index: 10; transition: opacity 0.3s;
+}
+.screen.active { display: flex; }
+
+#menu h1 { color: #fff; font-size: 38px; margin-bottom: 30px; text-align: center; letter-spacing: 1px; }
+#menu button {
+    width: 200px; padding: 14px; margin: 8px 0; border: none; border-radius: 12px;
+    background: #2d6a4f; color: #fff; font-size: 18px; cursor: pointer; transition: 0.2s;
+}
+#menu button:hover { background: #40916c; transform: scale(1.03); }
+
+/* Карта уровней */
+.map { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+.node { display: flex; flex-direction: column; align-items: center; opacity: 0.5; cursor: default; transition: 0.2s; }
+.node.unlocked { opacity: 1; cursor: pointer; }
+.node.unlocked:hover .circle { transform: scale(1.1); box-shadow: 0 0 20px #40916c; }
+.node .circle {
+    width: 54px; height: 54px; border-radius: 50%; background: #1b4332; border: 3px solid #40916c;
+    display: flex; justify-content: center; align-items: center; color: #fff;
+    font-size: 22px; font-weight: bold; transition: 0.2s;
+}
+.node.locked .circle { border-color: #444; background: #2a2a2a; }
+.node.completed .circle { background: #40916c; border-color: #52b788; }
+.node span { color: #ccc; margin-top: 8px; font-size: 13px; }
+.line { width: 35px; height: 3px; background: #2d6a4f; border-radius: 2px; }
+.line.locked { background: #444; }
+
+#back-btn {
+    padding: 10px 24px; border: none; border-radius: 10px; background: #555;
+    color: #fff; font-size: 16px; cursor: pointer; transition: 0.2s;
+}
+#back-btn:hover { background: #777; }
+
+/* Скрываем игру, пока не выбран уровень */
+#game { display: none; }
+#game.show { display: block; }
+
 #character {
     position: absolute;
     bottom: 0;
@@ -39,7 +80,7 @@ body {
     z-index: 2;
 }
 
-/* Диалоговое окно: компактнее, чтобы было больше видно фона */
+/* Диалоговое окно */
 #dialog {
     position: absolute;
     bottom: 0;
@@ -69,8 +110,8 @@ body {
 
 /* Кнопки: гибкая ширина, автоматически делят пространство */
 button {
-    flex: 1 1 250px;   /* растут/сжимаются, базовая ширина ~250px */
-    max-width: 450px;  /* не растягиваются слишком сильно */
+    flex: 1 1 250px;
+    max-width: 450px;
     padding: 14px;
     border: none;
     border-radius: 14px;
