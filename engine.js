@@ -75,4 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadScenes();
+    async function loadScenes() {
+    try {
+        const res = await fetch("scenes.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        scenes = await res.json();
+        showScreen("menu");
+    } catch (err) {
+        console.error("Ошибка загрузки сцен:", err);
+        menuScreen.style.display = "flex"; // Показываем меню даже при ошибке
+    }
+}
 });
