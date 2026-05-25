@@ -125,6 +125,8 @@ body {
     cursor: not-allowed;
     transition: all 0.3s ease;
     position: relative;
+    flex-shrink: 0;
+    min-width: 80px;
 }
 
 .node.unlocked {
@@ -180,6 +182,11 @@ body {
     font-weight: 500;
     letter-spacing: 0.5px;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-align: center;
+    max-width: 110px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .node.unlocked span {
@@ -289,4 +296,15 @@ button {
 button:hover {
     background: #40916c;
     transform: scale(1.03);
+}
+@media (max-width: 600px) {
+    .map {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .line {
+        width: 3px;
+        height: 25px;
+        background: linear-gradient(180deg, transparent, #2d6a4f, transparent);
+    }
 }
