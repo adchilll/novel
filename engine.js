@@ -38,18 +38,25 @@ document.addEventListener("DOMContentLoaded", () => {
         showScreen("menu"); // Показываем главный экран после загрузки
     }
 
-    function showScene(id) {
-        const scene = scenes[id];
-        if (!scene) return;
-
-        document.getElementById("background").src = "assets/" + scene.background;
-        document.getElementById("character").src = "assets/" + scene.character;
-        document.getElementById("text").innerText = scene.text;
-
-        if (id === "good_end" && unlockedLevel < 3) {
-            unlockedLevel++;
-            updateLevelMap();
-        }
+function showScreen(name) {
+    // Скрываем все экраны через удаление класса
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+    
+    // Показываем нужный
+    const target = document.getElementById(name);
+    if (target) {
+        target.classList.add("active");
+    }
+    
+    // Специфика для #game (если нужен display: block вместо flex)
+    if (name === "game") {
+        target.style.display = "block";
+    } else {
+        target.style.display = "";
+    }
+}
 
         const choicesDiv = document.getElementById("choices");
         choicesDiv.innerHTML = "";
