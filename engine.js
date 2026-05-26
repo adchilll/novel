@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let scenes = {};
     let unlockedLevel = 1;
 
+    const SAVED_LEVEL = localStorage.getItem("vn_progress");
+if (SAVED_LEVEL) {
+    unlockedLevel = parseInt(SAVED_LEVEL);
+}
     const menuScreen = document.getElementById("menu");
     const levelScreen = document.getElementById("levels");
     const gameScreen = document.getElementById("game");
@@ -77,13 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else if (choice.next === "levels") {
                         if (choice.text.includes("Вернуться на карту") && unlockedLevel < 3) {
                             unlockedLevel++;
+                            localStorage.setItem("vn_progress", unlockedLevel);
                             updateLevelMap();
                         }
                         showScreen("levels");
                     } else if (choice.next === "good_end") {
-                        // Стандартная логика для good_end
                         if (unlockedLevel < 3) {
                             unlockedLevel++;
+                            localStorage.setItem("vn_progress", unlockedLevel);
                             updateLevelMap();
                         }
                         showScene("good_end");
@@ -104,6 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 lvl < unlockedLevel ? "completed" : 
                 lvl === unlockedLevel ? "unlocked" : "locked"
             );
+            if (unlockedLevel > (localStorage.getItem("vn_progress") || 1)) {
+    localStorage.setItem("vn_progress", unlockedLevel);
+}
         });
         document.querySelectorAll(".line").forEach((line, i) => {
             line.className = "line";
@@ -130,4 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadScenes();
+    
+    document.getElementById("reset-btn")?.addEventListener("click", () => {
+    if (confirm("Сбросить весь прогресс и начать заново?")) {
+        localStorage.removeItem("vn_progress");
+        location.reload();
+    }
+});
 });
