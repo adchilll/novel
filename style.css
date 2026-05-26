@@ -318,17 +318,20 @@ button:hover {
     display: flex;
     justify-content: center;
     width: 100%;
+    min-height: auto;
 }
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #889991;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.25s ease;
-    display: flex;
+    transition: all 0.2s ease;
+    width: auto;
+    min-width: auto;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
 }
