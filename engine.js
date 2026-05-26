@@ -127,7 +127,6 @@ if (SAVED_LEVEL) {
             showScreen("menu");
         } catch (err) {
             console.error("Ошибка загрузки сцен:", err);
-            // Показываем меню с сообщением
             if (menuScreen) {
                 menuScreen.classList.add("active");
                 menuScreen.style.display = "flex";
@@ -137,12 +136,14 @@ if (SAVED_LEVEL) {
         }
     }
 
-    loadScenes();
-    
     document.getElementById("reset-btn")?.addEventListener("click", () => {
-    if (confirm("Сбросить весь прогресс и начать заново?")) {
+    if (confirm("Вы уверены, что хотите сбросить весь прогресс?\nЭто действие нельзя отменить.")) {
         localStorage.removeItem("vn_progress");
-        location.reload();
+        unlockedLevel = 1;
+        updateLevelMap();
+        showScreen("menu"); // Возвращаемся в чистое меню
+        console.log("Прогресс сброшен");
     }
 });
+    loadScenes();
 });
