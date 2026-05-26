@@ -320,30 +320,26 @@ button:hover {
     width: 100%;
     min-height: auto;
 }
-.btn-secondary {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 6px;
+#menu button.btn-secondary {
+    width: auto !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: none !important;
+    
+    margin-top: 25px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    margin-top: 10px;
-    width: auto;
-    display: inline-block;
+    transition: color 0.2s;
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(64, 145, 108, 0.4);
-    color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-1px);
-}
-
-.btn-secondary:active {
-    transform: translateY(0);
-    background: rgba(64, 145, 108, 0.25);
+#menu button.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-1px) !important;
 }
 
 @media (max-width: 600px) {
